@@ -4,9 +4,9 @@
 
 Public showcase repository for **ShopE**, a multi-vendor marketplace for buyers, sellers and admins. The storefront runs under the brand name SwiftCart.
 
-![ShopE concept cover](assets/concept-cover.webp)
+![ShopE: buyer web, buyer app and rider app](assets/cover.webp)
 
-<sub>Concept image. Real screenshots will be added once the demo deployment is live.</sub>
+<sub>Real screenshots from a local run with demo accounts. Personal details are blurred.</sub>
 
 ## At A Glance
 
@@ -22,6 +22,7 @@ Public showcase repository for **ShopE**, a multi-vendor marketplace for buyers,
 
 - [Overview](#overview)
 - [My Contributions](#my-contributions)
+- [Screenshots](#screenshots)
 - [Engineering Highlights](#engineering-highlights)
 - [Architecture](#architecture)
 - [Order And Money Flow](#order-and-money-flow)
@@ -50,6 +51,99 @@ The hardest part of the project is money: every payment, refund, payout and with
 - Integrated VNPay, GHN, AWS S3 / SES / SQS / Parameter Store and real-time chat
 - Built the GHN Simulator so the full shipping and COD cycle can be tested without a real carrier account
 - Set up the test strategy on Testcontainers and the sharded GitHub Actions pipeline
+
+## Screenshots
+
+### Buyer web
+
+![Storefront home with vouchers, categories and recommendations](docs/screenshots/buyer-01-home.webp)
+
+| Product detail | Search with filters |
+|---|---|
+| ![Product detail with variants and shop vouchers](docs/screenshots/buyer-02-product.webp) | ![Search results with location, price and brand filters](docs/screenshots/buyer-03-search.webp) |
+
+### Multi-shop cart, checkout and tracking
+
+| Cart split by shop | Checkout per shop |
+|---|---|
+| ![Cart with items from two shops](docs/screenshots/buyer-04-cart.webp) | ![Checkout with one package per shop](docs/screenshots/buyer-13-checkout.webp) |
+
+| Payment: SwiftPay wallet, VNPay or COD | Order tracking |
+|---|---|
+| ![Payment method choice with wallet balance check](docs/screenshots/buyer-14-checkout-pay.webp) | ![Package timeline from order placed to completed](docs/screenshots/buyer-10-track.webp) |
+
+### Seller center
+
+![Seller dashboard](docs/screenshots/seller-01-seller-dashboard.webp)
+
+| Product catalog (540 products, variants) | Order handling |
+|---|---|
+| ![Seller product list with variants and content quality](docs/screenshots/seller-02-seller-products.webp) | ![Order card with packaging evidence and Arrange shipment](docs/screenshots/seller-03-seller-orders.webp) |
+
+| Shop vouchers | Add product with content quality score |
+|---|---|
+| ![Shop voucher management](docs/screenshots/seller-07-seller-vouchers.webp) | ![Add product form with quality checklist](docs/screenshots/seller-12-seller-products-new.webp) |
+
+### Admin: money, shipping and moderation
+
+| Platform ledger | Wallet protection readiness checks |
+|---|---|
+| ![Platform ledger entries with direction, amount and dispute key](docs/screenshots/admin-05-admin-platform-ledger.webp) | ![Checks that custody equals wallet balances before protection is switched on](docs/screenshots/admin-06-admin-settings-wallet-custody.webp) |
+
+| Shipping reconciliation | COD remittance |
+|---|---|
+| ![Quoted vs actual carrier fee per package](docs/screenshots/admin-08-admin-shipping-reconciliation.webp) | ![COD evidence and remittance workflow](docs/screenshots/admin-09-admin-cod-remittance.webp) |
+
+| Operations overview | Product moderation (rules + AI) |
+|---|---|
+| ![Admin operations overview](docs/screenshots/admin-01-admin-dashboard.webp) | ![Moderation queue with keyword rules, AI analysis and risk level](docs/screenshots/admin-03-admin-moderation.webp) |
+
+### Off-platform transaction protection
+
+A seller sent a phone number to move the deal off the platform. The buyer never sees it, and the message lands in the admin review queue with the matched rule and the conversation context.
+
+| What the buyer sees | What the admin sees |
+|---|---|
+| ![Buyer chat where the off-platform message is hidden for safety](docs/screenshots/chat-01-buyer-chat-widget.webp) | ![Off-platform chat queue with 85% risk and matched pattern](docs/screenshots/chat-03-admin-offplatform-chat.webp) |
+
+![Spam pattern list used by the first detection tier](docs/screenshots/admin-20-admin-spam-patterns.webp)
+
+### Livestream selling
+
+| Seller studio on air | Broadcast monitor and live chat |
+|---|---|
+| ![Live Commerce Broadcast Studio on air](docs/screenshots/live-03-studio-on-air.webp) | ![Camera monitor with live interaction panel](docs/screenshots/live-04-broadcast-monitor.webp) |
+
+![Buyer watch page with live chat and products in the live](docs/screenshots/live-07-buyer-watch.webp)
+
+### Mobile apps (Flutter, Android)
+
+Buyer app:
+
+<p>
+  <img src="docs/screenshots/android-02-home.webp" alt="Buyer app home" width="200" />
+  <img src="docs/screenshots/android-03-cart.webp" alt="Buyer app cart" width="200" />
+  <img src="docs/screenshots/android-06-purchases.webp" alt="Buyer app purchases" width="200" />
+  <img src="docs/screenshots/android-07-order-detail.webp" alt="Buyer app order detail" width="200" />
+  <img src="docs/screenshots/android-12-chat-thread.webp" alt="Buyer app chat with hidden message" width="200" />
+</p>
+
+Rider app for the GHN Simulator:
+
+<p>
+  <img src="docs/screenshots/android-g01-home.webp" alt="Rider home with cash to hand in" width="200" />
+  <img src="docs/screenshots/android-g02-deliveries.webp" alt="Rider assigned deliveries" width="200" />
+  <img src="docs/screenshots/android-g03-cash.webp" alt="Rider cash handover" width="200" />
+  <img src="docs/screenshots/android-g06-delivery-detail.webp" alt="Delivery detail with COD amount" width="200" />
+</p>
+
+### GHN Simulator (carrier sandbox)
+
+| Shipment timeline | Cash collection from riders |
+|---|---|
+| ![Shipment detail with event history](docs/screenshots/ghn-02-admin-shipments-S5UP97.webp) | ![Cash flow from rider to GHN to SwiftCart](docs/screenshots/ghn-05-admin-cod-remittance.webp) |
+
+![Shipper management](docs/screenshots/ghn-04-admin-shippers.webp)
 
 ## Engineering Highlights
 
